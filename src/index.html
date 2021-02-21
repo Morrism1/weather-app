@@ -48,6 +48,12 @@
             </div>
           </form>
         </div>
+        <div class="units">
+          <button class="units__fahrenheit btn">&#176;F</button>
+          <button class="units__celcius units__celcius--active btn">
+            &#176;C
+          </button>
+        </div>
         <div
           class="weather-container w-128 mt-2 max-w-lg overflow-hidden shadow-lg rounded-lg"
         >
@@ -56,110 +62,41 @@
           >
             <div class="flex items-center">
               <div>
-                <div class="text-6xl font-semibold">22°C</div>
-                <div class="text-center">Feels like 23°C</div>
+                <div class="text-6xl font-semibold" current-temp></div>
+                <div class="text-center" feels-like-temp>Feels like 23°C</div>
               </div>
               <div class="mx-5">
-                <div class="font-semibold">Overcast Clouds</div>
+                <div class="font-semibold" current-description>
+                  Overcast Clouds
+                </div>
                 <div class="text-sm" data-weather-location></div>
               </div>
             </div>
             <div>
-              <img
-                src="/img/icons/c04d.png"
-                alt="Weather Icon"
-                class="rounded-full"
-              />
+              <canvas id="weatherIcon"></canvas>
             </div>
           </div>
           <div
             class="future-weather text-sm text-gray-200 bg-gray-800 px-6 py-8 overflow-hidden"
           >
-            <div class="flex items-center">
-              <div class="w-1/6 text-lg text-gray-200">Sat</div>
-              <div class="w-4/6 px-6 flex items-center">
-                <div>
-                  <img
-                    src="/img/icons/r02d.png"
-                    alt="Weather Icon"
-                    class="w-12 h-12"
-                  />
+            <template data-forecast-template>
+              <div class="flex items-center mb-8">
+                <div
+                  class="w-1/6 text-lg text-gray-200 font-semibold"
+                  forecast-day
+                ></div>
+                <div class="w-4/6 px-6 flex items-center justify-center">
+                  <div>
+                    <canvas id="weatherIcon" width="90" height="90"></canvas>
+                  </div>
+                  <div class="ml-3" forecast-weather-desc></div>
                 </div>
-                <div class="ml-3">Moderate rain</div>
-              </div>
-              <div class="w-1/6 text-right">
-                <div>24°C</div>
-                <div>14°C</div>
-              </div>
-            </div>
-            <div class="flex items-center mt-8">
-              <div class="w-1/6 text-lg text-gray-200">Sun</div>
-              <div class="w-4/6 px-6 flex items-center">
-                <div>
-                  <img
-                    src="/img/icons/r01d.png"
-                    alt="Weather Icon"
-                    class="w-12 h-12"
-                  />
+                <div class="w-1/6 text-right">
+                  <div forecast-high></div>
+                  <div forecast-low></div>
                 </div>
-                <div class="ml-3">Light rain</div>
               </div>
-              <div class="w-1/6 text-right">
-                <div>24°C</div>
-                <div>13°C</div>
-              </div>
-            </div>
-            <div class="flex items-center mt-8">
-              <div class="w-1/6 text-lg text-gray-200">Mon</div>
-              <div class="w-4/6 px-6 flex items-center">
-                <div>
-                  <img
-                    src="/img/icons/r03d.png"
-                    alt="Weather Icon"
-                    class="w-12 h-12"
-                  />
-                </div>
-                <div class="ml-3">Heavy rain</div>
-              </div>
-              <div class="w-1/6 text-right">
-                <div>24°C</div>
-                <div>15°C</div>
-              </div>
-            </div>
-            <div class="flex items-center mt-8">
-              <div class="w-1/6 text-lg text-gray-200">Tue</div>
-              <div class="w-4/6 px-6 flex items-center">
-                <div>
-                  <img
-                    src="/img/icons/r01d.png"
-                    alt="Weather Icon"
-                    class="w-12 h-12"
-                  />
-                </div>
-                <div class="ml-3">Light rain</div>
-              </div>
-              <div class="w-1/6 text-right">
-                <div>22°C</div>
-                <div>14°C</div>
-              </div>
-            </div>
-            <div class="flex items-center mt-8">
-              <div class="w-1/6 text-lg text-gray-200">Wed</div>
-              <div class="w-4/6 px-6 flex items-center">
-                <div>
-                  <img
-                    src="/img/icons/r01d.png"
-                    alt="Weather Icon"
-                    class="w-12 h-12"
-                  />
-                </div>
-                <div class="ml-3">Light rain</div>
-              </div>
-              <div class="w-1/6 text-right">
-                <div>26°C</div>
-                <div>14°C</div>
-              </div>
-            </div>
+            </template>
           </div>
         </div>
       </div>
@@ -169,7 +106,7 @@
     >
       <span
         >Developed by
-        <a class="hover:text-green-500" href="https://github.com/aliadhillon"
+        <a class="hover:text-green-500" href="https://github.com/morrism1"
           >Maurice MURANGWA</a
         >.</span
       >
