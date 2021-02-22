@@ -9,9 +9,7 @@ const API_KEY = 'c09966794fa0f3ef1e2d835c3c916ccf';
 
 let address = '';
 
-const removeQuotes = (str) => {
-  return str.replace(/^"|"$/g, '');
-};
+const removeQuotes = (str) => str.replace(/^"|"$/g, '');
 address = removeQuotes('kigali');
 const api = removeQuotes(API_KEY);
 
@@ -25,7 +23,7 @@ const searchEvents = () => {
     if (searchInput.value === '') return;
     address = searchInput.value;
     searchInput.value = '';
-    let str = removeQuotes(address);
+    const str = removeQuotes(address);
     console.log(str);
     const { lat, lng } = await getCoordinates(str);
     console.log(lat, lng);

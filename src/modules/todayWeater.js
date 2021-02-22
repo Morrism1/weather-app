@@ -31,7 +31,7 @@ const render = () => {
   currentTemp.textContent = `${toCelFah(current.temp, unit)}°`;
   feelsLikeTemp.textContent = `Feels like ${toCelFah(
     current.feels_like,
-    unit
+    unit,
   )}°`;
   tempDescription.textContent = current.weather[0].description;
 };

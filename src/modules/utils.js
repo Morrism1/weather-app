@@ -18,9 +18,9 @@ const getAnimatedIcons = (weatherIcon) => {
     return 'fog';
   }
   if (
-    weatherIcon.main === 'Clouds' ||
-    weatherIcon.main === 'Haze' ||
-    weatherIcon.main === 'Mist'
+    weatherIcon.main === 'Clouds'
+    || weatherIcon.main === 'Haze'
+    || weatherIcon.main === 'Mist'
   ) {
     return 'cloudy';
   }
@@ -33,13 +33,9 @@ const getAnimatedIcons = (weatherIcon) => {
   return 'clear_day';
 };
 
-const kelToCelcius = (temp) => {
-  return temp - 273.15;
-};
+const kelToCelcius = (temp) => temp - 273.15;
 
-const kelToFahrenheit = (temp) => {
-  return temp * (9 / 5) - 459.67;
-};
+const kelToFahrenheit = (temp) => temp * (9 / 5) - 459.67;
 
 const toCelFah = (temp, unit) => {
   if (unit === 'us') {
