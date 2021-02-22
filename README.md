@@ -19,7 +19,7 @@
 To get a local copy of it and run it, follow these simple example steps.
 
 - git clone [Repo](https://github.com/Morrism1/weather-app)
-- git branch chore/webpack
+- Run `git branch chore/webpack`
 - if you use `npm` remove `yarn.lock` and Run `npm install`.
 - Else run `yarn` and `yarn start` to start the application
 - To start the project, run `npm start` and Voila!
