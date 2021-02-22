@@ -14,9 +14,24 @@
 
 [Live Demo](https://awesome-ptolemy-d840b3.netlify.app/)
 
+## Getting Started
+
+To get a local copy of it and run it, follow these simple example steps.
+
+- git clone [Repo](https://github.com/Morrism1/weather-app)
+- git branch chore/webpack
+- if you use `npm` remove `yarn.lock` and Run `npm install`.
+- Else run `yarn` and `yarn start` to start the application
+- To start the project, run `npm start` and Voila!
+
+### Prerequisites
+
+- code editor
+- Browser
+
 ### Usage
 
-Accessing the application requires a running server. This can easily be achieved from the project's root directory by running first `yarn` to install required dependencies and later `yarn start` to start the server. The app will now be accessible at the following URL: `http://localhost:8080/`.
+Accessing the application requires a running server. This can easily be achieved from the project's root directory by running first `npm install` to install required dependencies and later `npm start` to start the server. The app will now be accessible at the following URL: `http://localhost:8080/`.
 
 ## Author
 
