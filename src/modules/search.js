@@ -13,36 +13,8 @@ const removeQuotes = (str) => str.replace(/^"|"$/g, '');
 address = removeQuotes('kigali');
 const api = removeQuotes(API_KEY);
 
-const initializeSearch = () => {
-  searchEvents();
-};
-
-const searchEvents = () => {
-  searchForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (searchInput.value === '') return;
-    address = searchInput.value;
-    searchInput.value = '';
-    const str = removeQuotes(address);
-    console.log(str);
-    const { lat, lng } = await getCoordinates(str);
-    console.log(lat, lng);
-    getWeatherData(lat, lng);
-    render();
-  });
-};
-
-const getCoordinates = async (address) => {
-  const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${address}&limit=5&appid=${api}`;
-  const getData = await fetch(URL);
-  const parsedData = await getData.json();
-  const latLong = {
-    lat: parsedData[0].lat,
-    lng: parsedData[0].lon,
-  };
-  console.log(latLong);
-
-  return latLong;
+const render = () => {
+  dataLocation.textContent = address.toUpperCase();
 };
 
 const getWeatherData = async (lat, lng) => {
@@ -55,8 +27,34 @@ const getWeatherData = async (lat, lng) => {
   setForecastWeather(dailyForecast);
 };
 
-const render = () => {
-  dataLocation.textContent = address.toUpperCase();
+const getCoordinates = async (address) => {
+  const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${address}&limit=5&appid=${api}`;
+  const getData = await fetch(URL);
+  const parsedData = await getData.json();
+  const latLong = {
+    lat: parsedData[0].lat,
+    lng: parsedData[0].lon,
+  };
+
+  return latLong;
+};
+
+const searchEvents = () => {
+  searchForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (searchInput.value === '') return;
+    address = searchInput.value;
+    searchInput.value = '';
+    const str = removeQuotes(address);
+    const { lat, lng } = await getCoordinates(str);
+
+    getWeatherData(lat, lng);
+    render();
+  });
+};
+
+const initializeSearch = () => {
+  searchEvents();
 };
 
 export default initializeSearch;

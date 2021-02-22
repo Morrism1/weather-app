@@ -12,10 +12,18 @@ const Skycons = require('skycons')(window);
 
 const icon = new Skycons({ color: 'white' });
 
+const render = () => {
+  currentTemp.textContent = `${toCelFah(current.temp, unit)}°`;
+  feelsLikeTemp.textContent = `Feels like ${toCelFah(
+    current.feels_like,
+    unit,
+  )}°`;
+  tempDescription.textContent = current.weather[0].description;
+};
+
 const todayWeather = (newWeather) => {
   current = newWeather;
   const data = current.weather[0];
-  console.log(data);
   icon.set(weatherIcon, getAnimatedIcons(data));
   icon.play();
   render();
@@ -24,16 +32,6 @@ const todayWeather = (newWeather) => {
 export const setCurrentUnit = (newUnit) => {
   unit = newUnit;
   render();
-};
-
-const render = () => {
-  console.log(current);
-  currentTemp.textContent = `${toCelFah(current.temp, unit)}°`;
-  feelsLikeTemp.textContent = `Feels like ${toCelFah(
-    current.feels_like,
-    unit,
-  )}°`;
-  tempDescription.textContent = current.weather[0].description;
 };
 
 export default todayWeather;

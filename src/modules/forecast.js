@@ -10,22 +10,10 @@ const Skycons = require('skycons')(window);
 
 const icon = new Skycons({ color: 'white' });
 
-const setForecastWeather = (newForecastArray) => {
-  forecastArray = [...newForecastArray];
-  clearList(futureWeather);
-  render();
-};
-
 const clearList = (list) => {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
-};
-
-const setMultiUnit = (newUnit) => {
-  unit = newUnit;
-  clearList(futureWeather);
-  render();
 };
 
 const getDayOfWeek = (dayIndex) => {
@@ -34,9 +22,7 @@ const getDayOfWeek = (dayIndex) => {
 };
 
 const render = () => {
-  console.log(forecastArray);
-
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 8; i += 1) {
     const highTemp = forecastArray[i].temp.max;
     const lowTemp = forecastArray[i].temp.min;
     const currentDayIndex = new Date(forecastArray[i].dt * 1000).getDay();
@@ -56,6 +42,18 @@ const render = () => {
 
     futureWeather.appendChild(forecastList);
   }
+};
+
+const setForecastWeather = (newForecastArray) => {
+  forecastArray = [...newForecastArray];
+  clearList(futureWeather);
+  render();
+};
+
+const setMultiUnit = (newUnit) => {
+  unit = newUnit;
+  clearList(futureWeather);
+  render();
 };
 
 export { setForecastWeather, setMultiUnit };
